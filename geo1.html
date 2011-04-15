@@ -43,8 +43,6 @@ http://sites.google.com/site/gmapsdevelopment/
         <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
         <script src="js/libs/modernizr-1.7.min.js"></script>
 
-
-
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
     </head>
@@ -58,13 +56,13 @@ http://sites.google.com/site/gmapsdevelopment/
                 <a href="#" data-role="button" data-icon="refresh" 
                    onclick="location.reload(true);" data-iconpos="notext"
                    title="Strat Over"></a>
-                <a href="#settings" data-role="button" data-icon="info" data-iconpos="notext"></a>
+                <a href="#about" data-role="button" data-icon="info" data-iconpos="notext"></a>
             </div>
 
             <div id="main-nav" data-role="content">
 
                 <article>
-                    <h1><span id="status">checking...</span></h1>
+                    <center><p><span id="status">checking...</span></p></center>
                 </article>
 
                 <div id="listPoints" data-role="content">
@@ -105,6 +103,27 @@ http://sites.google.com/site/gmapsdevelopment/
 
         </div><!-- /page -->
 
+         <!-- about page -->
+        <div data-role="page" id="about">
+            <div data-role="header">
+                <h1>About Us</h1>
+            </div>
+            <div data-role="content" class="mid-screen">
+                <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+
+                    <li>We love to develop simple, focused car application that
+                        bring you help in your search for Cool places.
+                    </li>
+                    <li>What to do next?<br/>
+                        Well... first find a good pub and have 2-3 beers... </li>
+                    <li> <a href="http://greenido.wordpress.com" target="_blank">Ido's Blog</a></li>
+                </ul>
+                <p><a href="mailto:amareldo@walla.com?subject=Comments/Suggestions on Your App&body=Hey,%0A%0A I wish to let you know that..."
+                      data-role="button" data-theme="b">Feedback</a>
+                </p>
+
+            </div><!-- /content -->
+        </div><!-- /page -->
 
 
         <!-- JavaScript at the bottom for fast page loading -->

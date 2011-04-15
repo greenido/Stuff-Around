@@ -52,34 +52,24 @@ function success(position) {
 function addItemsToPage(items) {
     var listPoints = [];
     $.each(items, function() {
-        /*  
-         *  
-         <ul id="ulPoints" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
-                    <li data-role="list-divider">Cool Places</li>
-                  
-                  
-                </ul>
-
-<li><a href="#words" data-transition="pop">
-                            <img src="images/words.png" alt="words" />Find Words
-                        </a>
-                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">Try It First</span>
-                    </li>
-
-                    <li><a href="#dic" data-transition="pop">
-                            <img src="images/dic.png" alt="dic" />Dictionary
-                        </a>
-                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">Definitions</span>
-                    </li>
-*/
+        
         var iconLink = "http://maps.google.com/mapfiles/kml/pal4/icon21.png"; // default one
         if (this.categories[0]) {
             iconLink = this.categories[0].icon;
         }
         //
-        listPoints.push('<li id="' + this.id + '"> <img src="'+ iconLink +'" alt="place icon" class="ui-li-icon"/> ' + this.name + '[Distance:' +
-            this.location.distance +'m] with: '+ this.hereNow.count + ' others. Total checkinsCount: '+
-            this.stats.checkinsCount +'</li>'); //location.lat
+        var others = this.hereNow.count;
+        var othersStr = "";
+        if (others > 0) {
+            othersStr += " with:" + others + " others";
+        }
+        var searchUrl = "http://www.google.com/search?q=" + encodeURI(this.name);
+        listPoints.push('<li id="' + this.id + '"><a href="'+ searchUrl +
+            '" data-transition="pop" target="_blank"><img src="'+ iconLink +
+            '" alt="place icon" class="ui-li-icon"/> ' +
+            this.name + othersStr + ' Checkins: '+
+            this.stats.checkinsCount + ' [' +
+            this.location.distance +'m]'+ '</a></li>'); //location.lat
                     
         var latLng = new google.maps.LatLng(this.location.lat, this.location.lng);
        
