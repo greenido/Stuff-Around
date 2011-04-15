@@ -3,7 +3,12 @@
    Date: 4-15-2011
 */
 var map;
-            
+    
+function roundNum(num) {
+    return Math.round(num*100)/100;
+}
+
+// putting the pins on the map
 function success(position) {
     var s = document.querySelector('#status');
   
@@ -12,7 +17,8 @@ function success(position) {
         return;
     }
   
-    s.innerHTML = "You are at (" + position.coords.latitude + ", " + position.coords.longitude + ")";
+    s.innerHTML = "You are at (" + roundNum(position.coords.latitude) +
+    ", " + roundNum(position.coords.longitude) + ")";
     s.className = 'success';
   
     var mapcanvas = document.createElement('div');
@@ -29,7 +35,7 @@ function success(position) {
         mapTypeControl: false,
         navigationControlOptions: {
             style: google.maps.NavigationControlStyle.SMALL
-            },
+        },
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
@@ -46,29 +52,54 @@ function success(position) {
 function addItemsToPage(items) {
     var listPoints = [];
     $.each(items, function() {
-        listPoints.push('<li id="' + this.id + '">' + this.name + '<br/> [Distance:' +
-            this.location.distance +'m] with: '+ this.hereNow.count + ' others. Total checkinsCount: '+
-            this.stats.checkinsCount +'</li>'); //location.lat
-                    
-        var latLng = new google.maps.LatLng(this.location.lat, this.location.lng);
+        /*  
+         *  
+         <ul id="ulPoints" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+                    <li data-role="list-divider">Cool Places</li>
+                  
+                  
+                </ul>
+
+<li><a href="#words" data-transition="pop">
+                            <img src="images/words.png" alt="words" />Find Words
+                        </a>
+                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">Try It First</span>
+                    </li>
+
+                    <li><a href="#dic" data-transition="pop">
+                            <img src="images/dic.png" alt="dic" />Dictionary
+                        </a>
+                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">Definitions</span>
+                    </li>
+*/
         var iconLink = "http://maps.google.com/mapfiles/kml/pal4/icon21.png"; // default one
         if (this.categories[0]) {
             iconLink = this.categories[0].icon;
         }
+        //
+        listPoints.push('<li id="' + this.id + '"> <img src="'+ iconLink +'" alt="place icon" class="ui-li-icon"/> ' + this.name + '[Distance:' +
+            this.location.distance +'m] with: '+ this.hereNow.count + ' others. Total checkinsCount: '+
+            this.stats.checkinsCount +'</li>'); //location.lat
+                    
+        var latLng = new google.maps.LatLng(this.location.lat, this.location.lng);
+       
         marker = new google.maps.Marker({
             map:map,
             draggable:true,
             title: this.name,
-            icon: iconLink,
-            //animation: google.maps.Animation.DROP,
+            icon: iconLink,   //animation: google.maps.Animation.DROP,
             position: latLng
         });
     });
-
-    $('<ul/>', {
-        'class': 'my-new-list',
-        html: listPoints.join('')
-    }).appendTo('body');
+    var ulHeader = '<li data-role="list-divider">Cool Places</li>';
+    $("#ulPoints").html(ulHeader + listPoints.join(''));
+    
+    $("#ulPoints").listview("refresh");
+    
+//    $(ulHeader, {
+//        'class': 'my-new-list',
+//        html: listPoints.join('')
+//    }).appendTo('body');
                   
                   
 }
