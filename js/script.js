@@ -63,13 +63,14 @@ function addItemsToPage(items) {
         if (others > 0) {
             othersStr += " with:" + others + " others";
         }
+        //<div class="ui-btn-text"><a href="index.html" class="ui-link-inherit"><img src="images/fi.png" alt="Finland" class="ui-li-icon ui-li-thumb">Finland <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">12</span></a></div>
         var searchUrl = "http://www.google.com/search?q=" + encodeURI(this.name);
         listPoints.push('<li id="' + this.id + '"><a href="'+ searchUrl +
             '" data-transition="pop" target="_blank"><img src="'+ iconLink +
-            '" alt="place icon" class="ui-li-icon"/> ' +
-            this.name + othersStr + ' Checkins: '+
+            '" alt="place icon" class="ui-li-icon ui-li-thumb"/> ' +
+            '<h2>&nbsp;' +this.name +'</h2><p>'+ othersStr + ' Checkins: '+
             this.stats.checkinsCount + ' [' +
-            this.location.distance +'m]'+ '</a></li>'); //location.lat
+            this.location.distance +'m]'+ '</p></a></li>'); //location.lat
                     
         var latLng = new google.maps.LatLng(this.location.lat, this.location.lng);
        
