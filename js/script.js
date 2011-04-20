@@ -20,7 +20,7 @@ function success(position) {
         return;
     }
   
-    s.innerHTML = "Found Specails";
+    s.innerHTML = "";
     console.log("You are at (" + roundNum(position.coords.latitude) +
         " , " + roundNum(position.coords.longitude) + ")");
     s.className = 'success';
