@@ -20,7 +20,7 @@ function success(position) {
         return;
     }
   
-    s.innerHTML = "Found You (Red Arrow)";
+    s.innerHTML = "Found Specails";
     console.log("You are at (" + roundNum(position.coords.latitude) +
         " , " + roundNum(position.coords.longitude) + ")");
     s.className = 'success';
