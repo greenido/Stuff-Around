@@ -267,3 +267,7 @@ a:hover { color: #036; }
  
     white-space: normal;
 }
+
+#main-nav {
+    padding: 3px;
+}
