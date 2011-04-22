@@ -8,14 +8,16 @@
 * Simple way for user to send feedback (using the mail client on their mobile device)
 
 <h2>License</h2>
+This project: MIT/GPL (why not right?)
 
-<h2>Major components</h2>
+<h3>Major components</h3>
 jQuery: MIT/GPL license
 
-Summary:
-
+<h2>Summary:</h2>
 This Application is searching for great 'specials' near you.
 It's a quick way to browse the area near you in order to find deals and free stuff.
 And yep, it is based on the Foursquare API.
+More info. on the API - https://developer.foursquare.com/
+
 </body>
 </html>
